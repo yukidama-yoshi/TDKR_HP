@@ -4,102 +4,157 @@
     <meta charset="UTF-8">
     <title>田所のホームページ</title>
     <style>
-        body {
-            background-color: #f0f0f0;
-            font-family: "MS Pゴシック", "MS PGothic", sans-serif;
-            text-align: center;
-            color: #333;
-            margin: 0;
-            padding: 20px;
+        /* 全体的にサイズを底上げ (16pxベース)
+           WindowsでMS Pゴシックを強制するため、引用符付きで指定
+        */
+        body { 
+            background-color: #f0f0f0; 
+            font-family: "MS Pゴシック", "MS PGothic", "ヒラギノ角ゴ Pro W3", sans-serif; 
+            text-align: center; 
+            color: #333; 
+            margin: 0; 
+            padding: 20px; 
+            font-size: 18px; /* 全体的に少し大きく */
         }
-        #container {
-            background-color: #ffffff;
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 2px solid #666;
-            padding: 20px;
-            box-shadow: 5px 5px 0px #999;
+        
+        #container { 
+            background-color: #ffffff; 
+            width: 95%;
+            max-width: 650px; /* 少し余裕を持たせました */
+            margin: 0 auto; 
+            border: 3px double #666; 
+            padding: 30px; 
+            box-shadow: 10px 10px 0px #999; 
         }
-        h1 {
-            background-color: #000080;
-            color: white;
-            padding: 10px;
-            font-size: 24px;
-            margin-top: 0;
+
+        /* 青い背景に白文字のヘッダー */
+        h1 { 
+            background-color: #000080; 
+            color: white; 
+            padding: 15px; 
+            font-size: 28px; 
+            margin-top: 0; 
         }
-        .main-image {
-            margin: 20px 0;
-            border: 1px solid #ccc;
-            max-width: 100%;
-            height: auto;
+
+        .main-image { 
+            margin: 25px 0; 
+            border: 1px solid #ccc; 
+            max-width: 100%; 
+            height: auto; 
+            display: inline-block; 
         }
-        .profile-section {
-            text-align: left;
-            margin: 20px auto;
-            width: fit-content;
-            line-height: 1.8;
-        }
-        .item-label {
-            font-weight: bold;
-            color: #000080;
-        }
-        hr {
-            border: 0;
-            border-top: 1px double #8c8b8b;
-            margin: 20px 0;
-        }
-        footer {
-            margin-top: 50px;
-            font-size: 11px;
-            color: #888;
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
-        }
+        
+        /* カウンター部分：フォントをMS Pゴシック系に変更 */
         .counter {
-            font-family: "Courier New", Courier, monospace;
+            font-family: "MS Pゴシック", "MS PGothic", "Hiragino Kaku Gothic ProN", sans-serif;
             background: #000;
             color: #0f0;
-            padding: 2px 5px;
+            padding: 4px 10px;
             font-weight: bold;
+            font-size: 1.4em;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+            border: 2px inset #444; /* 枠を少し凹ませる */
+            letter-spacing: 1px;
         }
-        marquee {
-            color: #ff0000;
-            font-weight: bold;
-            margin-bottom: 10px;
+
+        .profile-section { 
+            text-align: left; 
+            margin: 25px auto; 
+            width: fit-content; 
+            line-height: 2.0; 
+            font-size: 1.1em;
+        }
+
+        .item-label { 
+            font-weight: bold; 
+            color: #000080; 
+            text-decoration: underline; /* 項目を強調 */
+        }
+
+        hr { 
+            border: 0; 
+            border-top: 2px double #8c8b8b; 
+            margin: 30px 0; 
+        }
+
+        footer { 
+            margin-top: 60px; 
+            font-size: 13px; 
+            color: #888; 
+            border-top: 1px solid #ccc; 
+            padding-top: 15px; 
+        }
+
+        marquee { 
+            color: #ff0000; 
+            font-weight: bold; 
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
 
 <div id="container">
-    <marquee>ようこそ、田所のホームページへ！</marquee>
-    
+    <marquee scrollamount="8">ようこそ、田所のホームページへ！</marquee>
     <h1>Welcome to Tadokoro's Web Page</h1>
 
-    <img src="img/TDKR.png" alt="田所の近影" class="main-image">
+    <img src="img/TDKR.png" alt="田所" class="main-image">
     
-    <p>いらっしゃいませ！あなたは <span class="counter">00114514</span> 人目の訪問者です。</p>
+    <p>いらっしゃいませ！<br>あなたは <span class="counter" id="access-counter">-----</span> 人目の訪問者です。</p>
     
     <hr>
 
     <div class="profile-section">
         <p><span class="item-label">名前：</span> 田所 浩二</p>
         <p><span class="item-label">年齢：</span> ２４歳</p>
-        <p><span class="item-label">趣味：</span> 空手、水泳</p>
-        <p><span class="item-label">好きな食べ物：</span> アイスティー、ラーメン（屋台の！）、バッチェ冷えたビール</p>
-        <p><span class="item-label">職業：</span> 学生（数回ほど、ビデオ出演もしました）</p>
+        <p><span class="item-label">趣味：</span> 空手、水泳、トレーニング（昔は太ってた汗）</p>
+        <p><span class="item-label">好きな食べ物：</span> アイスティー、ラーメン、バッチェ冷えたビール</p>
+        <p><span class="item-label">職業：</span> 学生ですが、ビデオ出演もしました。</p>
     </div>
 
     <hr>
-
-    <p>最近は暑い日が続きますね(≧Д≦) 皆さんも水分補給を忘れずに！</p>
+    <p style="font-size: 1.3em; font-weight: bold;">暑スギィ！(≧Д≦)</p>
 
     <footer>
-        ※このホームページの内容はすべてフィクションです。<br>
-        実在の人物や団体、場所とは一切関係ありません。
+        <br>
+        ※このホームページの内容はすべてフィクションです。
     </footer>
 </div>
+
+<script>
+    function animateCounter(targetElement, finalNumber) {
+        const targetStr = finalNumber.toString().padStart(5, '0');
+        let currentDisplay = Array(targetStr.length).fill("-");
+        let step = 0;
+
+        const interval = setInterval(() => {
+            if (step < targetStr.length) {
+                currentDisplay[step] = targetStr[step];
+                targetElement.innerText = currentDisplay.join("");
+                step++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 80);
+    }
+
+    async function updateCounter() {
+        const workerUrl = 'https://dry-silence-4f1f.y-bb0.workers.dev/';
+        try {
+            const response = await fetch(`${workerUrl}?id=tadokoro_home`);
+            const data = await response.json();
+            if (data.count !== undefined) {
+                animateCounter(document.getElementById('access-counter'), data.count);
+            }
+        } catch (e) {
+            document.getElementById('access-counter').innerText = "00001";
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateCounter);
+</script>
 
 </body>
 </html>
