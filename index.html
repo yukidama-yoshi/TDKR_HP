@@ -143,8 +143,24 @@
 
     async function updateCounter() {
         const workerUrl = 'https://dry-silence-4f1f.y-bb0.workers.dev/';
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // URLに ?admin=true があれば管理者としてローカルストレージに登録
+        if (urlParams.get('admin') === 'true') {
+            localStorage.setItem('is_tadokoro_admin', 'true');
+        }
+
+        const isAdmin = localStorage.getItem('is_tadokoro_admin') === 'true';
+        
+        // 管理者の場合は no-count=1 を付与、一般ならそのまま
+        const fetchUrl = `${workerUrl}?id=tadokoro_home${isAdmin ? '&no-count=1' : ''}`;
+
+        if (isAdmin) {
+            console.log("%c 管理者モード：カウントを除外して取得します ", "color: white; background: red; font-weight: bold;");
+        }
+
         try {
-            const response = await fetch(`${workerUrl}?id=tadokoro_home`);
+            const response = await fetch(fetchUrl);
             const data = await response.json();
             if (data.count !== undefined) {
                 animateCounter(document.getElementById('access-counter'), data.count);
